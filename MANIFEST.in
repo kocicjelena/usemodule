@@ -1,0 +1,7 @@
+include requirements.txt
+# Include the license file
+include LICENSE.txt
+
+# Include the useapi files
+recursive-include usemodule *
+recursive-include example *
