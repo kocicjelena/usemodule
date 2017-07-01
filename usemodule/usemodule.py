@@ -40,16 +40,13 @@ except ImportError:
     from urllib2 import urlopen
     from urllib import urlencode
     from urllib import __version__ as urllib_version
-warnings.simplefilter('always', DeprecationWarning)
 
-CHARACTER_LIMIT = 140
 class UseApi(object):
 
 
     
-    def __init__(self,
-                 base_url=None,
-				 debugHTTP=False):
+    def __init__(self, base_url=None, debugHTTP=False):
+		
 		if base_url is None:
             self.base_url = 'localhost
         else:
@@ -67,6 +64,7 @@ class UseApi(object):
             requests_log = logging.getLogger("requests.packages.urllib3")
             requests_log.setLevel(logging.DEBUG)
             requests_log.propagate = True
+		
 	@property
 	def content(self):
 		if not self._content:
