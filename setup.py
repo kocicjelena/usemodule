@@ -21,13 +21,33 @@ import re
 import codecs
 
 from setuptools import setup, find_packages
+try:
+    from pypandoc import convert
+
+    def read_md(f):
+        return convert(f, 'rst')
+
+except ImportError:
+    convert = None
+    print(
+        "warning: pypandoc module not found, could not convert Markdown to RST"
+    )
+
+    def read_md(f):
+        return open(f, 'r').read()
+
+README = os.path.join(os.path.dirname(__file__), 'README.md')
+
 setup(
     name='usemodule',
+	long_description=read_md(README),
+    packages=find_packages(),
 	version='1.0',
-    description='setup module for import',
+    description='setup module',
     author='Jelena',
     author_email='kocicjelena@gmail.com',
-    url='https://github.com/kocicjelena/usemodule/',
+	url='https://github.com/kocicjelena/usemodule/',
+	packages=['usemodule'],url='https://github.com/kocicjelena/usemodule/',
     packages=find_packages(exclude=('tests', 'docs')),
     platforms=['Any'],
     install_requires=['future', 'requests'],
