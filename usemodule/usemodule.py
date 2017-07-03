@@ -39,37 +39,58 @@ except ImportError:
     from urlparse import urlparse, urlunparse
     from urllib2 import urlopen
     from urllib import urlencode
-    from urllib import __version__ as urllib_version
-
-class UseApi(object):
 
 
-    
-    def __init__(self, base_url=None, debugHTTP=False):
-		
-		if base_url is None:
-            self.base_url = 'localhost
+class InitOnAccess:
+    def __init__(self, method, *args, **kwargs):
+        self.method = method
+        self.method_name = method.__name__
+        self.args = args
+        self.kwargs = kwargs
+        self._hosted = None
+
+    def __get__(self, obj, cls):
+        if not self._hosted:
+            print('hosted')
+            self._hosted = self.method(*self.args, **self.kwargs)
         else:
-            self.base_url = base_url
+            print('cached!')
+        return self._hosted
 
-       
-        if debugHTTP:
-            import logging
-            import http.client
 
-            http.client.HTTPConnection.debuglevel = 1
 
-            logging.basicConfig()  # you need to initialize logging, otherwise you will not see anything from requests
-            logging.getLogger().setLevel(logging.DEBUG)
-            requests_log = logging.getLogger("requests.packages.urllib3")
-            requests_log.setLevel(logging.DEBUG)
-            requests_log.propagate = True
-		
-	@property
-	def content(self):
+
+class UseModule():
+	super().__init__(self, base_url=None, *args, **kwargs)
+	if base_url is None:
+		self.base_url = 'localhost'
+	else:
+		self.base_url = base_url
+
+    def content(self):
 		if not self._content:
 			print("the content...")
-			self._content = urlopen(self.url).read()        
-		return self._content 
-    
+			self._content = urlopen(self.base_url).read()        
+		return self._content    
+		
+class MethodClass:
+    def reset(self):
+        self.base_url = ''
+
+
+class UseModuleUser(object):
+    def __init__(self, function):
+        self.fget = function
+
+    def __get__(self, obj, cls):
+        value = self.fget(obj or cls)
+        setattr(cls, self.fget.__name__, value)
+        return value
+
+class MyModuleModule:
+
+    @UseModuleUser
+    def modulise(self):
+        print("modulise!")
+        return val
     
