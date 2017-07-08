@@ -8,4 +8,4 @@ __license__      = 'Apache License 2.0'
 __version__      = '0.1'
 __url__          = 'https://github.com/kocicjelena/useapi'
 __download_url__ = 'https://pypi.python.org/pypi/usemodule'
-from .usemodule import UseApi                        
+from .usemodule import *                       
