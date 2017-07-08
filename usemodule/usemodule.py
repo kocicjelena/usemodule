@@ -24,10 +24,5 @@ class UseModuleUser(object):
         setattr(cls, self.fget.__name__, value)
         return value
 
-class MyModuleModule:
 
-    @UseModuleUser
-    def modulise(self):
-        print("modulise!")
-        return value
     
