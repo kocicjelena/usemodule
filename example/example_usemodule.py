@@ -2,17 +2,15 @@
 
 import os
 import sys
-import useapi
+import usemodule
 
 
-USAGE = '''Usage: 
-
-'''
+'''Usage: call User as one instance'''
 
 
 def main():
-    api = useapi.UseApi()
-	print (api.content())
+    api = usemodule.User()
+	print (api('firstuser'))
 
 
 if __name__ == "__main__":
