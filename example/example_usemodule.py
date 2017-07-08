@@ -10,8 +10,9 @@ import usemodule
 
 def main():
     api = usemodule.User()
-	print (api('firstuser'))
-
+	print (api('firstuser', function1))
+def function1():
+	pass
 
 if __name__ == "__main__":
     main()
