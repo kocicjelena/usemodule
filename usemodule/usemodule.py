@@ -8,21 +8,19 @@ import sys
 import os
 
 class User(object):
-    def __call__(self, username):
-        self.username=username
+    
+	def __call__(self, username, function):
+		
+		self.username=username
+		self.fget = function
+	def __get__(self, username):
+		value = self.fget(username)
+		setattr(username, self.fget.__name__, value)
+		return value		
         
 class UserVer(User):
     def __call__(self, username):
         super(UserVer, self).__call__(username)  
-        
-class UseModuleUser(object):
-    def __call__(self, function):
-        self.fget = function
-
-    def __get__(self, obj, cls):
-        value = self.fget(obj or cls)
-        setattr(cls, self.fget.__name__, value)
-        return value
 
 
     
