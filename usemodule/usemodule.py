@@ -7,8 +7,16 @@ import json
 import sys
 import os
 
+class User(object):
+    def __call__(self, username):
+        self.username=username
+        
+class UserVer(User):
+    def __call__(self, username):
+        super(UserVer, self).__call__(username)  
+        
 class UseModuleUser(object):
-    def __init__(self, function):
+    def __call__(self, function):
         self.fget = function
 
     def __get__(self, obj, cls):
@@ -21,5 +29,5 @@ class MyModuleModule:
     @UseModuleUser
     def modulise(self):
         print("modulise!")
-        return val
+        return value
     
