@@ -39,7 +39,7 @@ except ImportError:
 README = os.path.join(os.path.dirname(__file__), 'README.md')
 
 setup(
-    name='usemodule',
+    name='usemm',
 	long_description=read_md(README),
     packages=find_packages(),
 	version='1.0',
@@ -53,6 +53,11 @@ setup(
     tests_require=['pytest3'],
     keywords='use api',
     scripts=['example/example_usemodule.py'],
+    entry_points={
+        'console_scripts': [
+            'usemm = example_usemodule:main'
+        ]
+    },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
