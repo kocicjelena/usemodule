@@ -5,12 +5,11 @@ import sys
 import usemodule
 
 
-'''Usage: call User as one instance'''
-
-
+'''Usage: call User as one instance print(api('firstuser', function1))'''
 def main():
-    api = usemodule.User()
-	print (api('firstuser', function1))
+	api = usemodule.User()
+	print(api("f", function1))
+
 def function1():
 	pass
 
