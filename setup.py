@@ -52,7 +52,7 @@ setup(
     #setup_requires=['pytest-runner'],
     tests_require=['pytest3'],
     keywords='use api',
-    scripts=['example/calab.py'],
+    scripts=['example/example_usemodule.py'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
