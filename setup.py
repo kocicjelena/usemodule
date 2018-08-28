@@ -53,6 +53,11 @@ setup(
     tests_require=['pytest3'],
     keywords='use api',
     scripts=['example/example_usemodule.py'],
+    entry_points={
+        'console_scripts': [
+            'usemodule = example_usemodule:main'
+        ]
+    },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
