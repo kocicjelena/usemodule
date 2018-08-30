@@ -8,6 +8,8 @@ confinement: devmode
 apps:
   usemodule:
     command: usemodule
-
+parts:
+  usemodule:
+    plugin: nil
 
 
