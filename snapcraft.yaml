@@ -8,9 +8,6 @@ confinement: devmode
 apps:
   usemodule:
     command: usemodule
-parts:
-  usemodule:
-    source: https://github.com/kocicjelena/usemodule.git
-    plugin: python
+
 
 
